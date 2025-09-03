@@ -11,7 +11,8 @@
     "lint": "eslint src/**/*.ts",
     "typecheck": "tsc --noEmit",
     "postbuild": "cp -r public dist/",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build",
+    "render-build": "npm install && npm run build"
   },
   "keywords": ["portfolio", "strategy", "advisor", "mortgage", "securities", "rebalancing"],
   "author": "",
