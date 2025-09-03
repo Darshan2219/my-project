@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Portfolio Advisory System - Capital Markets</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-chart-line"></i> Portfolio Advisory System</h1>
+        <div class="header-info">
+            <div class="system-badge">
+                <span class="badge non-agentic">Non-Agentic</span>
+                <span class="badge advisory">Advisory Only</span>
+                <span class="badge mortgage-focus">Mortgage Focus</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Use Case Overview -->
+        <div class="card full-width use-case-card">
+            <h2><i class="fas fa-bullseye"></i> Use Case: Portfolio Optimization Advisory</h2>
+            <div class="use-case-details">
+                <div class="use-case-item">
+                    <strong>Purpose:</strong> Analyze loan/securities portfolios and provide rebalancing suggestions with reasoning
+                </div>
+                <div class="use-case-item">
+                    <strong>Decision Authority:</strong> Portfolio managers review and execute all recommendations
+                </div>
+                <div class="use-case-item">
+                    <strong>Focus:</strong> Capital Markets - Mortgage Lifecycle Portfolio Management
+                </div>
+                <div class="use-case-item">
+                    <strong>Maturity:</strong> Emerging - Ready for pilot implementation
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Upload & Analysis -->
+        <div class="row">
+            <div class="card">
+                <h2><i class="fas fa-upload"></i> Portfolio Analysis</h2>
+                <p class="card-description">Upload your mortgage portfolio for AI-powered optimization recommendations</p>
+                
+                <div class="analysis-section">
+                    <button class="btn-primary" onclick="loadSamplePortfolio()">
+                        <i class="fas fa-database"></i> Load Sample Mortgage Portfolio
+                    </button>
+                    
+                    <div class="portfolio-info" id="portfolioInfo" style="display:none;">
+                        <h4>Current Portfolio</h4>
+                        <div id="portfolioSummary"></div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-analyze" onclick="analyzePortfolio()" disabled id="analyzeBtn">
+                        <i class="fas fa-analytics"></i> Analyze & Get Recommendations
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-tachometer-alt"></i> Portfolio Metrics</h2>
+                <div class="metrics-grid" id="portfolioMetrics">
+                    <div class="metric">
+                        <div class="metric-value">$0</div>
+                        <div class="metric-label">Total Portfolio Value</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Asset Count</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">0%</div>
+                        <div class="metric-label">Mortgage Allocation</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">0.0%</div>
+                        <div class="metric-label">Average Yield</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations Panel -->
+        <div class="card full-width" id="recommendationsCard" style="display:none;">
+            <h2><i class="fas fa-lightbulb"></i> AI Recommendations</h2>
+            <div class="disclaimer-banner">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>HUMAN EXECUTION REQUIRED:</strong> These are advisory recommendations only. 
+                Portfolio managers must review, validate, and execute all decisions.
+            </div>
+            <div id="recommendationsContent"></div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="card full-width" id="riskCard" style="display:none;">
+            <h2><i class="fas fa-shield-alt"></i> Risk Assessment</h2>
+            <div id="riskContent"></div>
+        </div>
+
+        <!-- Implementation Guidance -->
+        <div class="row" id="guidanceSection" style="display:none;">
+            <div class="card">
+                <h2><i class="fas fa-tasks"></i> Implementation Plan</h2>
+                <div id="implementationPlan"></div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-chart-bar"></i> Expected Business Impact</h2>
+                <div id="businessImpact"></div>
+            </div>
+        </div>
+
+        <!-- Business Case & Technical Assessment -->
+        <div class="row">
+            <div class="card">
+                <h2><i class="fas fa-business-time"></i> Business Impact Analysis</h2>
+                <button class="btn-secondary" onclick="loadBusinessImpact()">
+                    <i class="fas fa-download"></i> View Business Case
+                </button>
+                <div id="businessCaseContent" style="display:none;"></div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-cogs"></i> Technical Feasibility</h2>
+                <button class="btn-secondary" onclick="loadTechnicalFeasibility()">
+                    <i class="fas fa-wrench"></i> View Technical Assessment
+                </button>
+                <div id="technicalContent" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Detail Modal -->
+    <div id="recommendationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Recommendation Details</h2>
+            <div id="modalContent"></div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn-primary" onclick="exportRecommendation()">
+                    <i class="fas fa-download"></i> Export for Implementation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/advisory-dashboard.js"></script>
+</body>
+</html>
