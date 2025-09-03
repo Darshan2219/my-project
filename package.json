@@ -9,7 +9,7 @@
     "build": "npx tsc",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npx tsc --noEmit",
     "postbuild": "cp -r public dist/",
     "vercel-build": "npm run build",
     "render-build": "npm install && npm run build"
